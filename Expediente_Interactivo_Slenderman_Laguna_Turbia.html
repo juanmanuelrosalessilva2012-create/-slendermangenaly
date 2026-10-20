@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Expediente Laguna Turbia | Slenderman</title>
+<meta name="description" content="Expediente interactivo de lectura sobre Slenderman en Laguna Turbia, de Ezequiel Dellutri.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#080b10;--panel:#111720;--panel2:#171f2a;--line:#2a3543;--text:#edf1f5;--muted:#a1adbb;--red:#c52c3b;--red2:#7f1420;--gold:#d6b778;--green:#77c7a0}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 75% 0%,#351019 0,transparent 38%),radial-gradient(ellipse at 10% 45%,#111d2b 0,transparent 40%),var(--bg);color:var(--text);font-family:"Plus Jakarta Sans",sans-serif;min-height:100vh}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.12;background-image:linear-gradient(transparent 96%,#8b9aaa 100%),linear-gradient(90deg,transparent 96%,#8b9aaa 100%);background-size:42px 42px;mask-image:linear-gradient(to bottom,black,transparent 75%);z-index:-1}
+button{font:inherit;cursor:pointer}a{color:#f08b94}.topbar{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px clamp(16px,4vw,48px);border-bottom:1px solid #28313d;background:#080b10d9;position:sticky;top:0;z-index:20;backdrop-filter:blur(16px)}
+.brand{font:700 14px Cinzel,serif;letter-spacing:.12em;display:flex;align-items:center;gap:10px}.brand-mark{display:grid;place-items:center;width:34px;height:34px;border:1px solid var(--red);border-radius:10px;color:#ff7b84;background:#2b0c12;font-size:18px}.status{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#e6a0a6;border:1px solid #6f2931;padding:7px 10px;border-radius:999px}
+.layout{display:grid;grid-template-columns:245px minmax(0,1fr);max-width:1440px;margin:auto;min-height:calc(100vh - 66px)}.sidebar{padding:24px 16px;border-right:1px solid #26303b;background:#090d13a6}.side-label{font-size:10px;letter-spacing:.2em;color:#758294;text-transform:uppercase;padding:0 12px;margin:8px 0 12px}.nav{display:grid;gap:6px}.nav button{display:flex;align-items:center;gap:11px;text-align:left;padding:12px;border:1px solid transparent;border-radius:12px;background:transparent;color:#aeb8c5;font-size:13px;transition:.2s}.nav button:hover,.nav button.active{background:#1a202a;border-color:#3b2630;color:white}.nav button.active .nav-icon{color:#ff747e}.nav-icon{font-size:17px;width:22px;text-align:center;color:#9aa7b6}.side-note{margin:28px 8px 0;padding:14px;border:1px solid #30313b;border-radius:14px;background:#10151d;font-size:11px;line-height:1.6;color:#9ba6b4}.main{padding:clamp(18px,4vw,48px);min-width:0}.section{display:none;animation:fade .35s ease}.section.active{display:block}@keyframes fade{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
+.eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.2em;color:#f07883;font-weight:700}.hero{position:relative;overflow:hidden;border:1px solid #482630;border-radius:24px;padding:clamp(24px,5vw,58px);background:linear-gradient(110deg,#11151eF2,#1b0d14dd),radial-gradient(circle at 90% 30%,#8b1728,transparent 45%);min-height:300px;display:flex;align-items:center}.hero:after{content:"?";position:absolute;right:7%;top:0;font:900 clamp(160px,30vw,340px) Cinzel,serif;color:#b72c3c;opacity:.12;line-height:1}.hero-content{max-width:680px;position:relative;z-index:1}.hero h1{font:900 clamp(32px,5vw,64px)/1.05 Cinzel,serif;margin:14px 0 18px;letter-spacing:-.04em}.hero h1 span{color:#f16c78}.hero p{color:#c0c8d2;max-width:590px;line-height:1.8;font-size:14px}.button-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}.btn{border:1px solid #5d2b35;background:#2a1017;color:white;padding:11px 15px;border-radius:11px;font-size:12px;font-weight:700;transition:.2s}.btn:hover{transform:translateY(-2px);border-color:#d84d5b}.btn.secondary{background:#121923;border-color:#354150;color:#d4dbe4}.btn:focus-visible,.nav button:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:16px 0 30px}.stat{border:1px solid var(--line);border-radius:14px;background:#101620;padding:16px}.stat strong{display:block;font:700 20px Cinzel,serif;margin-bottom:5px}.stat span{font-size:10px;color:#9da9b8;text-transform:uppercase;letter-spacing:.1em}
+.section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;margin:0 0 22px}.section-head h2{font:700 clamp(25px,3vw,38px) Cinzel,serif;margin:8px 0}.section-head p{color:var(--muted);font-size:13px;line-height:1.7;max-width:680px;margin:0}.pill{white-space:nowrap;border:1px solid #4c3036;border-radius:999px;padding:7px 10px;color:#ed9aa1;font-size:10px;text-transform:uppercase;letter-spacing:.1em}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.card{background:linear-gradient(145deg,#141b25,#0e131b);border:1px solid #2b3644;border-radius:17px;padding:20px;min-width:0}.card h3{font:700 17px Cinzel,serif;margin:8px 0 10px}.card p,.card li{font-size:12px;line-height:1.8;color:#b6c0cc}.card p:last-child{margin-bottom:0}.card-kicker{font-size:10px;color:#f08089;letter-spacing:.16em;text-transform:uppercase;font-weight:700}.card-icon{width:43px;height:43px;border-radius:13px;background:#32121a;border:1px solid #6e2632;display:grid;place-items:center;color:#ff8790;font-size:20px}.full{grid-column:1/-1}.muted{color:var(--muted)}.warning{border-left:3px solid var(--gold);background:#211d16;padding:13px 15px;border-radius:0 10px 10px 0;color:#d8c9a8;font-size:11px;line-height:1.7;margin-top:15px}
+.character-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.character{cursor:pointer;text-align:left;width:100%;color:inherit;transition:.25s}.character:hover{transform:translateY(-4px);border-color:#91404a}.character .open-label{font-size:10px;color:#f08b94;margin-top:15px;display:block}.tag{display:inline-block;font-size:10px;border:1px solid #3b4655;color:#bac4d1;padding:5px 8px;border-radius:999px;margin:3px 4px 0 0}
+.timeline{display:grid;gap:12px;counter-reset:steps}.step{display:grid;grid-template-columns:48px 1fr;gap:14px;align-items:start}.step-num{display:grid;place-items:center;width:42px;height:42px;border-radius:13px;background:#30121a;border:1px solid #71303b;color:#ff8b94;font:700 17px Cinzel,serif}.step .card{padding:17px}.step h3{margin-top:0}
+.clue-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.clue{min-height:155px;text-align:left;position:relative;overflow:hidden}.clue .secret{display:none;color:#d3dbe5;font-size:12px;line-height:1.7;margin-top:10px}.clue.revealed{border-color:#9a424c;background:linear-gradient(140deg,#24141b,#101720)}.clue.revealed .secret{display:block}.clue.revealed .clue-hide{display:none}.clue button{border:0;background:none;color:inherit;padding:0;text-align:left;width:100%}
+.quote{font:italic 18px/1.8 Cinzel,serif;color:#f1d9dc;border-left:3px solid var(--red);padding:8px 0 8px 18px;margin:14px 0}.quiz-question{font:700 19px Cinzel,serif;line-height:1.5}.answers{display:grid;gap:9px;margin:18px 0}.answer{padding:12px 14px;border-radius:11px;border:1px solid #354150;background:#131a24;color:#dce3eb;text-align:left;font-size:12px}.answer:hover{border-color:#bd4653}.answer.correct{border-color:#478c70;background:#10271f}.answer.wrong{border-color:#9c3c48;background:#2a1218}.feedback{min-height:25px;color:#d6b778;font-size:12px;line-height:1.7}.quiz-footer{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}.progress{height:5px;background:#293341;border-radius:99px;overflow:hidden;margin:16px 0}.progress span{display:block;height:100%;width:0;background:linear-gradient(90deg,#7f1420,#ed6570);transition:width .3s}.source-list{display:grid;gap:10px}.source-list a{font-size:12px;line-height:1.6;text-decoration:none;border:1px solid #303b48;background:#101720;padding:13px;border-radius:12px;display:block}.source-list a:hover{border-color:#b44450}.footer{border-top:1px solid #28313d;padding:18px 24px;text-align:center;font-size:10px;color:#788596}
+.modal-backdrop{position:fixed;inset:0;z-index:50;background:#030509d9;display:none;place-items:center;padding:18px;backdrop-filter:blur(8px)}.modal-backdrop.open{display:grid}.modal{width:min(620px,100%);max-height:85vh;overflow:auto;border:1px solid #65303b;background:#101720;border-radius:20px;padding:25px;box-shadow:0 25px 90px #000b}.modal-top{display:flex;justify-content:space-between;gap:14px;align-items:start}.modal h2{font:700 26px Cinzel,serif;margin:8px 0}.close{background:#222b36;border:1px solid #3d4a59;color:#fff;border-radius:10px;width:36px;height:36px;font-size:20px}.mobile-menu{display:none}
+@media(max-width:900px){.layout{grid-template-columns:1fr}.sidebar{border-right:0;border-bottom:1px solid #26303b;padding:10px 14px;position:sticky;top:65px;z-index:15;overflow:auto}.side-label,.side-note{display:none}.nav{display:flex;gap:6px;min-width:max-content}.nav button{padding:9px 11px;font-size:11px}.nav-icon{width:auto}.main{padding:20px}.character-grid,.clue-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.brand{font-size:11px}.status{font-size:9px}.hero{min-height:0}.hero h1{font-size:35px}.grid,.character-grid,.clue-grid{grid-template-columns:1fr}.section-head{align-items:flex-start;flex-direction:column}.stats{gap:8px}.stat{padding:12px}.stat strong{font-size:17px}.main{padding:14px}.card{padding:16px}.topbar{padding:12px}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><span class="brand-mark">⌕</span> EXPEDIENTE · LAGUNA TURBIA</div>
+  <div class="status">● Caso abierto / lectura interactiva</div>
+</header>
+<div class="layout">
+<aside class="sidebar">
+  <div class="side-label">Archivo de investigación</div>
+  <nav class="nav" aria-label="Navegación principal">
+    <button class="active" data-section="inicio"><span class="nav-icon">⌂</span> Portada del caso</button>
+    <button data-section="libro"><span class="nav-icon">▤</span> Ficha del libro</button>
+    <button data-section="personajes"><span class="nav-icon">♙</span> Personajes</button>
+    <button data-section="pistas"><span class="nav-icon">⌕</span> Sala de pistas</button>
+    <button data-section="trama"><span class="nav-icon">⇢</span> Ruta del misterio</button>
+    <button data-section="analisis"><span class="nav-icon">✧</span> Análisis literario</button>
+    <button data-section="quiz"><span class="nav-icon">?</span> Desafío final</button>
+    <button data-section="fuentes"><span class="nav-icon">▣</span> Fuentes</button>
+  </nav>
+  <div class="side-note"><strong>PROTOCOLO</strong><br>Explorá las fichas, abrí las pistas y respondé el desafío. El contenido argumental se limita a la sinopsis editorial y al material de la presentación original; las preguntas de análisis son interpretativas.</div>
+</aside>
+<main class="main">
+<section id="inicio" class="section active">
+  <div class="hero"><div class="hero-content">
+    <div class="eyebrow">Expediente literario · Caso 001</div>
+    <h1>SLENDERMAN<br>EN <span>LAGUNA TURBIA</span></h1>
+    <p>Un pueblo casi desierto. Bosques oscuros. Una laguna gris. Entrá al expediente de la novela de Ezequiel Dellutri y explorá el misterio que rodea a Slenderman.</p>
+    <div class="button-row"><button class="btn" data-go="personajes">Abrir fichas de personajes ↗</button><button class="btn secondary" data-go="pistas">Investigar las pistas ⌕</button></div>
+  </div></div>
+  <div class="stats">
+    <div class="stat"><strong>168</strong><span>Páginas ilustradas</span></div><div class="stat"><strong>2023</strong><span>Primera edición</span></div><div class="stat"><strong>01</strong><span>Colección Creepypastas</span></div><div class="stat"><strong>★</strong><span>Terror · misterio · aventura</span></div>
+  </div>
+  <div class="grid">
+    <article class="card"><div class="card-kicker">Resumen del caso</div><h3>¿Qué sucede en Laguna Turbia?</h3><p>Rómulo y Lautaro conocen los peligros del lugar gracias a lo aprendido de Bautista Bro. Deben entrar en acción y enfrentar a Slenderman, la presencia tenebrosa que se oculta en las entrañas del pueblo.</p><button class="btn secondary" data-go="trama">Seguir la ruta del misterio →</button></article>
+    <article class="card"><div class="card-kicker">Objetivo de lectura</div><h3>Leer como investigador</h3><p>Separá los datos confirmados de las interpretaciones: observá el escenario, identificá a los personajes y pensá qué función cumplen el miedo, el misterio y el trabajo en equipo.</p><button class="btn secondary" data-go="analisis">Abrir análisis →</button></article>
+  </div>
+</section>
+<section id="libro" class="section">
+  <div class="section-head"><div><div class="eyebrow">Documento de identidad</div><h2>Ficha del libro</h2><p>Datos editoriales publicados por la ficha del libro y el catálogo de Bambalí Ediciones.</p></div><span class="pill">Registro bibliográfico</span></div>
+  <div class="grid">
+    <article class="card"><div class="card-icon">▤</div><div class="card-kicker">Título</div><h3>Slenderman en Laguna Turbia</h3><p>Novela juvenil que combina terror, misterio, suspenso y aventuras en el universo de las creepypastas.</p></article>
+    <article class="card"><div class="card-icon">✍</div><div class="card-kicker">Autor e ilustrador</div><h3>Ezequiel Dellutri</h3><p>Autor del texto. Las ilustraciones son de Nicolás Viñolo, según la ficha editorial consultada. En la presentación original figura escrito como Nicolás Vignolo; se conserva esa mención en el apartado de la presentación.</p></article>
+    <article class="card"><div class="card-icon">▦</div><div class="card-kicker">Edición</div><h3>Bambalí Ediciones · 2023</h3><p>Primera edición: marzo de 2023. Colección: Creepypastas. ISBN: 978-987-48754-6-4.</p></article>
+    <article class="card"><div class="card-icon">▧</div><div class="card-kicker">Formato</div><h3>168 páginas</h3><p>Ilustraciones en blanco y negro, formato impreso y encuadernación rústica. Medidas indicadas en la ficha editorial: 23 × 16 cm.</p></article>
+    <article class="card full"><div class="card-kicker">Sinopsis editorial</div><h3>El punto de partida</h3><p>Laguna Turbia es un pueblo casi desierto, rodeado de bosques oscuros y una laguna gris. Rómulo y Lautaro aprendieron de Bautista Bro que nada es lo que parece y deben enfrentar al señor tenebroso que se oculta en las entrañas del lugar: Slenderman.</p><div class="warning">Nota de rigor: esta experiencia interactiva no reemplaza la lectura completa de la novela. Los pasos de la trama se presentan como recorrido temático de la sinopsis, no como una reconstrucción exhaustiva de todos los capítulos.</div></article>
+  </div>
+</section>
+<section id="personajes" class="section">
+  <div class="section-head"><div><div class="eyebrow">Personas y entidades</div><h2>Fichas de personajes</h2><p>Seleccioná una ficha para abrir los datos disponibles. Los roles se basan en la sinopsis editorial y en el contenido de la presentación original.</p></div><span class="pill">Tocá para abrir</span></div>
+  <div class="character-grid">
+    <button class="card character" data-character="romulo"><div class="card-icon">♜</div><div class="card-kicker">Cazador</div><h3>Rómulo Berlain</h3><p>Uno de los jóvenes que se enfrenta a la amenaza de Laguna Turbia junto con Lautaro.</p><span class="tag">Protagonista</span><span class="open-label">Abrir expediente ↗</span></button>
+    <button class="card character" data-character="lautaro"><div class="card-icon">⌘</div><div class="card-kicker">Compañero</div><h3>Lautaro Ranvo</h3><p>Compañero de Rómulo y parte central de la dupla que debe enfrentar a Slenderman.</p><span class="tag">Trabajo en equipo</span><span class="open-label">Abrir expediente ↗</span></button>
+    <button class="card character" data-character="bautista"><div class="card-icon">◈</div><div class="card-kicker">Guía</div><h3>Bautista Bro</h3><p>Es quien les enseña a Rómulo y Lautaro sobre los peligros que los esperan.</p><span class="tag">Conocimiento</span><span class="open-label">Abrir expediente ↗</span></button>
+    <button class="card character" data-character="slender"><div class="card-icon">☠</div><div class="card-kicker">Amenaza</div><h3>Slenderman</h3><p>La entidad tenebrosa que se oculta en las entrañas de Laguna Turbia.</p><span class="tag">Antagonista</span><span class="open-label">Abrir expediente ↗</span></button>
+  </div>
+  <div class="warning"><strong>Sobre los apodos:</strong> la ficha comercial de la novela identifica a Rómulo como “El Mandíbula” y a Lautaro como “El Cráneo”. En la edición interactiva se muestra también el nombre personalizado “El Escápula” solicitado anteriormente, pero la fuente editorial consultada no confirma ese apodo para Rómulo. “Escápula” aparece asociado a Bautista Berlain en la sinopsis de la segunda novela, <em>Smile Dog en Laguna Turbia</em>; por eso no se presenta como un dato confirmado del primer libro.</div>
+</section>
+<section id="pistas" class="section">
+  <div class="section-head"><div><div class="eyebrow">Mesa de investigación</div><h2>Sala de pistas</h2><p>Abrí cada sobre para descubrir un dato de la sinopsis o una pregunta de lectura. Las pistas no revelan escenas inventadas.</p></div><span class="pill" id="clue-counter">0 / 6 descubiertas</span></div>
+  <div class="clue-grid">
+    <article class="card clue"><button><div class="card-icon">▧</div><div class="card-kicker">Pista 01 · Escenario</div><h3>El paisaje</h3><span class="clue-hide muted">Tocá para revelar</span><div class="secret">La sinopsis describe un pueblo casi desierto, bosques oscuros y una laguna gris. El ambiente contribuye al suspenso.</div></button></article>
+    <article class="card clue"><button><div class="card-icon">♙</div><div class="card-kicker">Pista 02 · Protagonistas</div><h3>La dupla</h3><span class="clue-hide muted">Tocá para revelar</span><div class="secret">Rómulo y Lautaro actúan como compañeros ante la amenaza. La ficha editorial presenta el trabajo en equipo como uno de los temas del libro.</div></button></article>
+    <article class="card clue"><button><div class="card-icon">◈</div><div class="card-kicker">Pista 03 · Aprendizaje</div><h3>El mentor</h3><span class="clue-hide muted">Tocá para revelar</span><div class="secret">La sinopsis indica que Rómulo y Lautaro aprendieron de Bautista Bro. La presentación interpreta su función como guía.</div></button></article>
+    <article class="card clue"><button><div class="card-icon">☠</div><div class="card-kicker">Pista 04 · Amenaza</div><h3>El señor tenebroso</h3><span class="clue-hide muted">Tocá para revelar</span><div class="secret">Slenderman es la amenaza central indicada en la sinopsis editorial. El libro pertenece a la colección Creepypastas.</div></button></article>
+    <article class="card clue"><button><div class="card-icon">⌁</div><div class="card-kicker">Pista 05 · Umbral</div><h3>La Falla Demencial</h3><span class="clue-hide muted">Tocá para revelar</span><div class="secret">La presentación original menciona la Falla Demencial y la Realidad Oscura. La sinopsis editorial usa esos términos para anticipar un mundo de pesadillas y miedo.</div></button></article>
+    <article class="card clue"><button><div class="card-icon">✧</div><div class="card-kicker">Pista 06 · Temas</div><h3>Más que terror</h3><span class="clue-hide muted">Tocá para revelar</span><div class="secret">La ficha editorial también señala ciencia ficción, misterio, suspenso, aventuras, diferencias, empatía y trabajo en equipo.</div></button></article>
+  </div>
+  <div class="button-row"><button class="btn secondary" id="reset-clues">Volver a ocultar pistas</button></div>
+</section>
+<section id="trama" class="section">
+  <div class="section-head"><div><div class="eyebrow">Recorrido temático</div><h2>Ruta del misterio</h2><p>Un mapa conceptual para seguir el conflicto central sin inventar acontecimientos que no están confirmados por las fuentes consultadas.</p></div><span class="pill">4 etapas</span></div>
+  <div class="timeline">
+    <div class="step"><div class="step-num">01</div><article class="card"><div class="card-kicker">El escenario</div><h3>Un pueblo que inquieta</h3><p>Laguna Turbia aparece como un lugar casi desierto, rodeado por bosques oscuros y una laguna gris. La descripción instala una atmósfera de misterio.</p></article></div>
+    <div class="step"><div class="step-num">02</div><article class="card"><div class="card-kicker">El aprendizaje</div><h3>Lo que saben Rómulo y Lautaro</h3><p>La sinopsis señala que ambos aprendieron de Bautista Bro. Ese conocimiento prepara el conflicto con la amenaza sobrenatural.</p></article></div>
+    <div class="step"><div class="step-num">03</div><article class="card"><div class="card-kicker">El umbral</div><h3>La Falla Demencial y la Realidad Oscura</h3><p>Estos nombres aparecen en el material de la presentación y en el texto promocional del libro, como parte del imaginario inquietante de la novela.</p></article></div>
+    <div class="step"><div class="step-num">04</div><article class="card"><div class="card-kicker">El conflicto</div><h3>Enfrentar a Slenderman</h3><p>El núcleo del argumento es la decisión de los protagonistas de salir a la acción y enfrentar al señor tenebroso que acecha en Laguna Turbia.</p></article></div>
+  </div>
+  <div class="warning">Este recorrido resume el planteo narrativo disponible; no afirma el orden exacto de cada escena ni describe el desenlace completo.</div>
+</section>
+<section id="analisis" class="section">
+  <div class="section-head"><div><div class="eyebrow">Lectura crítica</div><h2>Análisis literario</h2><p>Ideas para explicar cómo se construye el clima y qué temas propone el libro. Las interpretaciones están señaladas como tales.</p></div><span class="pill">Para exponer</span></div>
+  <div class="grid">
+    <article class="card"><div class="card-kicker">Ambiente</div><h3>El espacio crea suspenso</h3><p>Los bosques oscuros, la laguna gris y el pueblo casi desierto generan una sensación de aislamiento. <strong>Interpretación:</strong> el escenario funciona como una advertencia de que algo extraño sucede.</p></article>
+    <article class="card"><div class="card-kicker">Género</div><h3>Creepypasta y terror</h3><p>La novela lleva al formato literario una figura asociada al mundo de las creepypastas. El misterio y el miedo impulsan la expectativa del lector.</p></article>
+    <article class="card"><div class="card-kicker">Personajes</div><h3>La importancia de la dupla</h3><p>Rómulo y Lautaro enfrentan juntos la amenaza. <strong>Interpretación:</strong> su cooperación permite analizar el valor del trabajo en equipo ante una situación difícil.</p></article>
+    <article class="card"><div class="card-kicker">Temas</div><h3>Empatía y diferencias</h3><p>La ficha editorial incluye diferencias, empatía y trabajo en equipo entre los temas. Para desarrollar esta idea, relacioná las decisiones de los personajes con esos valores a partir de escenas que hayas leído.</p></article>
+    <article class="card full"><div class="card-kicker">Cita del material promocional</div><div class="quote">“No habrá marcha atrás una vez que abras la primera página…”</div><p>La frase funciona como invitación a entrar en el universo de la historia. La presentación original la utiliza para destacar el clima de terror y el cruce hacia la Realidad Oscura.</p></article>
+    <article class="card full"><div class="card-kicker">Preguntas para debatir</div><ol><li>¿Qué efecto produce el paisaje de Laguna Turbia?</li><li>¿Por qué es importante que Rómulo y Lautaro actúen como compañeros?</li><li>¿Cómo influye conocer el mundo de las creepypastas en la experiencia de lectura?</li><li>¿Qué escena del libro te parece que representa mejor el miedo o la valentía? Justificá tu respuesta con un ejemplo del texto.</li></ol></article>
+  </div>
+</section>
+<section id="quiz" class="section">
+  <div class="section-head"><div><div class="eyebrow">Prueba de lectura</div><h2>Desafío final</h2><p>Respondé las preguntas para comprobar cuánto recordás de los datos del libro y su sinopsis.</p></div><span class="pill">8 preguntas</span></div>
+  <div class="card">
+    <div class="quiz-footer"><span class="card-kicker" id="quiz-step">Pregunta 1 de 8</span><span class="tag" id="quiz-score">Puntaje: 0</span></div>
+    <div class="progress"><span id="quiz-progress"></span></div>
+    <div class="quiz-question" id="question">¿Quién escribió Slenderman en Laguna Turbia?</div>
+    <div class="answers" id="answers"></div>
+    <div class="feedback" id="feedback" aria-live="polite"></div>
+    <div class="quiz-footer"><button class="btn secondary" id="restart-quiz">Reiniciar desafío</button><button class="btn" id="next-question" disabled>Siguiente →</button></div>
+  </div>
+</section>
+<section id="fuentes" class="section">
+  <div class="section-head"><div><div class="eyebrow">Trazabilidad</div><h2>Fuentes consultadas</h2><p>Se priorizaron la ficha del autor y la información editorial. El resto del contenido interactivo está basado en la presentación original y se identifica como interpretación cuando corresponde.</p></div><span class="pill">Referencias</span></div>
+  <div class="source-list">
+    <a href="https://www.edellutri.com/libros0/slenderman-en-laguna-turbia" target="_blank" rel="noopener noreferrer"><strong>1. Sitio oficial de Ezequiel Dellutri · Slenderman en Laguna Turbia ↗</strong><br>Sinopsis editorial y presentación del libro.</a>
+    <a href="https://editoriales.conabip.gob.ar/novedades/slenderman-en-laguna-turbia" target="_blank" rel="noopener noreferrer"><strong>2. Programa Libro% / CONABIP · Slenderman en Laguna Turbia ↗</strong><br>Descripción, autor, ilustrador, datos editoriales y temas.</a>
+    <a href="https://www.edellutri.com/libros0/smile-dog-en-laguna-turbia" target="_blank" rel="noopener noreferrer"><strong>3. Sitio oficial de Ezequiel Dellutri · Smile Dog en Laguna Turbia ↗</strong><br>Consultado únicamente para aclarar el uso de “Escápula” en la segunda novela de la serie.</a>
+  </div>
+  <div class="warning">Corrección importante para la exactitud: la fuente comercial de la primera novela identifica a Rómulo como “El Mandíbula” y a Lautaro como “El Cráneo”. El apodo “El Escápula” pedido para la presentación se mantiene como personalización visual, no como dato editorial confirmado.</div>
+</section>
+</main>
+</div>
+<footer class="footer">EXPEDIENTE LAGUNA TURBIA · Presentación interactiva de lectura · Material escolar</footer>
+
+<div class="modal-backdrop" id="character-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal"><div class="modal-top"><div><div class="eyebrow">Expediente de personaje</div><h2 id="modal-title">Personaje</h2></div><button class="close" id="close-modal" aria-label="Cerrar">×</button></div><div id="modal-content"></div></div>
+</div>
+<script>
+const navButtons=[...document.querySelectorAll('.nav button')];
+function showSection(id){document.querySelectorAll('.section').forEach(s=>s.classList.toggle('active',s.id===id));navButtons.forEach(b=>b.classList.toggle('active',b.dataset.section===id));window.scrollTo({top:0,behavior:'smooth'});}
+navButtons.forEach(b=>b.addEventListener('click',()=>showSection(b.dataset.section)));
+document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>showSection(b.dataset.go)));
+const characterData={
+ romulo:{title:'Rómulo Berlain',sub:'Joven cazador · Protagonista',body:'Rómulo forma parte de la dupla que debe enfrentar a Slenderman en Laguna Turbia. La sinopsis editorial confirma su papel central junto a Lautaro. La presentación original lo describe como decidido y valiente; esa descripción pertenece al material de la presentación, no a una cita textual verificada.',tags:['Dupla protagonista','Cazador de monstruos'],note:'Nombre personalizado en esta presentación: Rómulo “El Escápula” Berlain. La fuente editorial consultada identifica al personaje como Rómulo “El Mandíbula” Berlain.'},
+ lautaro:{title:'Lautaro Ranvo',sub:'Compañero de Rómulo',body:'La sinopsis editorial lo presenta junto a Rómulo como uno de los protagonistas que debe enfrentar a Slenderman. La presentación original lo caracteriza como estratega e inteligente; para fundamentar esa lectura, conviene relacionarla con escenas concretas del libro.',tags:['Compañero','Trabajo en equipo'],note:'La ficha comercial consultada utiliza el apodo “El Cráneo”.'},
+ bautista:{title:'Bautista Bro',sub:'Guía y fuente de aprendizaje',body:'La sinopsis indica que Rómulo y Lautaro aprendieron de Bautista Bro. La presentación original interpreta su función como mentor que les enseña sobre los peligros que van a enfrentar.',tags:['Guía','Conocimiento'],note:'No se agregan aquí datos biográficos o acciones específicas que no estén respaldadas por la sinopsis consultada.'},
+ slender:{title:'Slenderman',sub:'Amenaza central',body:'La sinopsis editorial lo describe como el señor tenebroso que se oculta en las entrañas de Laguna Turbia. Su presencia conecta la novela con el universo de las creepypastas y sostiene el conflicto central.',tags:['Antagonista','Creepypastas'],note:'La ficha se limita al papel general que la sinopsis confirma; no revela un desenlace.'}
+};
+const modal=document.getElementById('character-modal');
+document.querySelectorAll('[data-character]').forEach(btn=>btn.addEventListener('click',()=>{const c=characterData[btn.dataset.character];document.getElementById('modal-title').textContent=c.title;document.getElementById('modal-content').innerHTML=`<div class="card-kicker">${c.sub}</div><p style="color:#c1cbd6;line-height:1.8;font-size:13px">${c.body}</p><div>${c.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div><div class="warning">${c.note}</div>`;modal.classList.add('open');document.getElementById('close-modal').focus();}));
+function closeModal(){modal.classList.remove('open')}
+document.getElementById('close-modal').addEventListener('click',closeModal);modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+const clues=[...document.querySelectorAll('.clue')];function updateClueCount(){document.getElementById('clue-counter').textContent=`${clues.filter(c=>c.classList.contains('revealed')).length} / ${clues.length} descubiertas`}
+clues.forEach(c=>c.querySelector('button').addEventListener('click',()=>{c.classList.toggle('revealed');updateClueCount()}));document.getElementById('reset-clues').addEventListener('click',()=>{clues.forEach(c=>c.classList.remove('revealed'));updateClueCount()});
+const questions=[
+ {q:'¿Quién escribió Slenderman en Laguna Turbia?',a:['Ezequiel Dellutri','Nicolás Viñolo','Bambalí Ediciones'],correct:0,why:'Ezequiel Dellutri es el autor; Nicolás Viñolo realizó las ilustraciones.'},
+ {q:'¿Quién ilustró el libro según la ficha editorial?',a:['Ezequiel Dellutri','Nicolás Viñolo','Bautista Bro'],correct:1,why:'La ficha editorial acredita las ilustraciones a Nicolás Viñolo.'},
+ {q:'¿Qué amenaza deben enfrentar los protagonistas?',a:['Smile Dog','Slenderman','Un dragón'],correct:1,why:'La sinopsis de esta primera novela señala a Slenderman como amenaza central.'},
+ {q:'¿Cómo se describe Laguna Turbia en la sinopsis?',a:['Una ciudad luminosa junto al mar','Un pueblo casi desierto, con bosques oscuros y una laguna gris','Una isla tropical'],correct:1,why:'Es la descripción que aparece en la sinopsis editorial.'},
+ {q:'¿Quién les enseñó a Rómulo y Lautaro?',a:['Bautista Bro','Nicolás Viñolo','El narrador de la ficha'],correct:0,why:'La sinopsis afirma que Rómulo y Lautaro aprendieron de Bautista Bro.'},
+ {q:'¿A qué colección pertenece la novela?',a:['Creepypastas','Clásicos del oeste','Cuentos de verano'],correct:0,why:'La ficha bibliográfica indica la colección Creepypastas.'},
+ {q:'¿Cuál de estos temas figura en la ficha editorial?',a:['Trabajo en equipo','Competencia deportiva','Viajes espaciales reales'],correct:0,why:'La ficha incluye el trabajo en equipo entre los temas del libro.'},
+ {q:'¿Cuál es la mejor forma de justificar una interpretación literaria?',a:['Inventar una escena que encaje','Usar ejemplos del texto y explicar la interpretación','Decir que es un dato oficial sin fuente'],correct:1,why:'Una interpretación sólida se apoya en escenas o detalles reales de la lectura.'}
+];
+let qi=0,score=0,answered=false;
+const qEl=document.getElementById('question'),answersEl=document.getElementById('answers'),feedbackEl=document.getElementById('feedback'),nextBtn=document.getElementById('next-question');
+function renderQuestion(){answered=false;const q=questions[qi];document.getElementById('quiz-step').textContent=`Pregunta ${qi+1} de ${questions.length}`;document.getElementById('quiz-score').textContent=`Puntaje: ${score}`;document.getElementById('quiz-progress').style.width=`${qi/questions.length*100}%`;qEl.textContent=q.q;answersEl.innerHTML='';feedbackEl.textContent='';nextBtn.disabled=true;nextBtn.textContent=qi===questions.length-1?'Ver resultado':'Siguiente →';q.a.forEach((a,i)=>{const b=document.createElement('button');b.className='answer';b.textContent=a;b.addEventListener('click',()=>chooseAnswer(i,b));answersEl.appendChild(b)})}
+function chooseAnswer(i,btn){if(answered)return;answered=true;const q=questions[qi];[...answersEl.children].forEach((b,j)=>{b.disabled=true;if(j===q.correct)b.classList.add('correct')});if(i===q.correct){score++;feedbackEl.textContent='¡Correcto! '+q.why}else{btn.classList.add('wrong');feedbackEl.textContent='Todavía no. '+q.why}document.getElementById('quiz-score').textContent=`Puntaje: ${score}`;document.getElementById('quiz-progress').style.width=`${(qi+1)/questions.length*100}%`;nextBtn.disabled=false}
+nextBtn.addEventListener('click',()=>{if(!answered)return;if(qi<questions.length-1){qi++;renderQuestion()}else{qEl.textContent=`Expediente completado: ${score} de ${questions.length}`;answersEl.innerHTML='';feedbackEl.textContent=score>=7?'¡Excelente investigación! Dominás los datos principales del libro.':score>=4?'Buen trabajo. Revisá las fichas y volvé a intentarlo para reforzar los datos.':'Volvé a recorrer el expediente y probá otra vez: cada pista te ayuda a recordar.';document.getElementById('quiz-step').textContent='Resultado final';document.getElementById('quiz-progress').style.width='100%';nextBtn.disabled=true;nextBtn.textContent='Finalizado'}});
+document.getElementById('restart-quiz').addEventListener('click',()=>{qi=0;score=0;renderQuestion()});renderQuestion();
+</script>
+</body>
+</html>
